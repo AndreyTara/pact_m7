@@ -19,13 +19,13 @@ const GetTasks = () => {
       {error && <p>{error}</p>}
       {/* <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p> */}
       <ul>
-        {items.length > 0 &&
+        {items?.length > 0 &&
           items.map((item) => {
             const { id, createdAt, completed } = item;
             return (
               <li key={id}>
-                <p>CreatedAt: {item.createdAt}</p>
-                <p>Completed: {item.completed.toString()}</p>
+                <p>CreatedAt: {createdAt}</p>
+                <p>Completed: {completed.toString()}</p>
               </li>
             );
           })}
