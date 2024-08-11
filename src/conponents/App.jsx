@@ -5,6 +5,7 @@ import Layout from "./Layout/Layout";
 import { AppBar } from "./AppBar/AppBar";
 import TaskList from "./TaskList/TaskList";
 import { fetchTasks } from "../redux/tasks/operations";
+import { TaskForm } from "./TaskForm/TaskForm";
 // import StartEl from "./StartEl/StartEl";
 // import GetTasks from "./GetTasks/GetTasks";
 // import { StatusFilter } from "./StatusFilter/StatusFilter";
@@ -22,6 +23,7 @@ function App() {
     <>
       <AppBar />
       <Layout>
+        <TaskForm />
         <TaskList />
         {/* <StartEl /> */}
         {/* <GetTasks /> */}
