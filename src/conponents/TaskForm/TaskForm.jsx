@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
-import { Button } from "../Button/Button";
+import Button from "../Button/Button";
 import { addTask } from "../../redux/tasks/operations";
 import css from "./TaskForm.module.css";
 
-export const TaskForm = () => {
+const TaskForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
@@ -25,3 +25,4 @@ export const TaskForm = () => {
     </form>
   );
 };
+export default TaskForm;

@@ -1,9 +1,11 @@
 // src/components/Task/Task.jsx
 import css from "./Task.module.css";
 import { useDispatch } from "react-redux";
-import { MdClose } from "react-icons/md";
+import { MdClose, MdEdit } from "react-icons/md";
+
 import { deleteTask, toggleCompleted } from "../../redux/tasks/operations";
-import { Button } from "../Button/Button";
+import Button from "../Button/Button";
+
 export const Task = ({ task }) => {
   const dispatch = useDispatch();
 
@@ -20,9 +22,14 @@ export const Task = ({ task }) => {
         onChange={handleToggle}
       />
       <h3>{task.text}</h3>
-      <Button onClick={handleDelete}>
-        <MdClose size={24} />
-      </Button>
+      <div className={css.btnBox}>
+        {/* <Button>
+          <MdEdit size={24} />
+        </Button> */}
+        <Button onClick={handleDelete}>
+          <MdClose size={24} />
+        </Button>
+      </div>
     </div>
   );
 };
