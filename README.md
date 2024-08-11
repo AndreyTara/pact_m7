@@ -1,3 +1,7 @@
+# npm i clsx
+
+# npm i react-icons
+
 # npm i axios
 
 # npm i @reduxjs/toolkit + redux
