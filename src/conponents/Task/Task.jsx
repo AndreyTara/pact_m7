@@ -12,8 +12,13 @@ export const Task = ({ task }) => {
   const handleToggle = () => dispatch(toggleCompleted(task));
 
   return (
-    <div className={css.wrapTask}>
-      <input type="checkbox" checked={task.completed} onChange={handleToggle} />
+    <div className={css.wrapper}>
+      <input
+        className={css.checkbox}
+        type="checkbox"
+        checked={task.completed}
+        onChange={handleToggle}
+      />
       <h3>{task.text}</h3>
       <Button onClick={handleDelete}>
         <MdClose size={24} />
