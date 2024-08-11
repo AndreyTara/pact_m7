@@ -40,3 +40,10 @@
   height: 20px;
   cursor: pointer;
 }
+
+.btnBox {
+  margin-left: auto;
+  margin-right: 0;
+  display: flex;
+  gap: 10px;
+}
