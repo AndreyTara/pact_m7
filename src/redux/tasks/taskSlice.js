@@ -10,21 +10,29 @@ const tasksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTasks.pending, (state, action) => {
-        state.isLoading = true;
-      })
+      .addCase(fetchTasks.pending, handlePending)
       .addCase(fetchTasks.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(deleteTask.pending, (state, action) => {
-        state.isLoading = true;
+      .addCase(addTask.pending, handlePending)
+      .addCase(addTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items.push(action.payload);
       })
-      .addCase(deleteTask.fulfilled, (state, action) => {})
-      .addCase(toggleCompleted.pending, (state, action) => {
-        state.isLoading = true;
+      .addCase(addTask.rejected, handleRejected)
+      .addCase(deleteTask.pending, handlePending)
+      .addCase(deleteTask.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          (task) => task.id === action.payload.id
+          );
+        state.items.splice(index, 1);
       })
+      .addCase(toggleCompleted.pending, handlePending)
       .addCase(toggleCompleted.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -33,16 +41,11 @@ const tasksSlice = createSlice({
         );
         state.items.splice(index, 1, action.payload);
       })
-      .addCase(fetchTasks.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(toggleCompleted.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
-    // builder
-    //   .addCase(fetchTasks.pending, (state, action) => {
+      .addCase(fetchTasks.rejected, handleRejected)
+      .addCase(toggleCompleted.rejected, handleRejected);
+      .addCase(deleteTask.rejected, handleRejected)
+      // builder
+      //   .addCase(fetchTasks.pending, (state, action) => {
     //     state.isLoading = true;
     //   })
     //   .addCase(fetchTasks.fulfilled, (state, action) => {
